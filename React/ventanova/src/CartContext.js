@@ -27,15 +27,19 @@ export const CartProvider = ({ children }) => {
     setMessage(`${product.name} added to cart!`);
     setTimeout(() => setMessage(''), 3000); // Clear message after 3 seconds
   };
-//Eliminamos un producto del carrito de compras.
+
   const removeFromCart = (productId) => {
     setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
     setMessage('Item removed from cart!');
     setTimeout(() => setMessage(''), 3000); // Clear message after 3 seconds
   };
-//En el componente CartProvider, creamos un objeto con las propiedades
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, message }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, message }}>
       {children}
     </CartContext.Provider>
   );
