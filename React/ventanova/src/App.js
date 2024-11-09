@@ -19,6 +19,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Product List</h1>
+      </header>
+      <main>
         {products.length > 0 ? (
           <ul>
             {products.map(product => (
@@ -28,14 +30,14 @@ function App() {
                 <p>Price: ${product.price}</p>
                 <p>Stock: {product.stock}</p>
                 <p>Category: {product.category}</p>
-                <img src={product.image} alt={product.name} width="100" />
+                <img src={product.image} alt={product.name} />
               </li>
             ))}
           </ul>
         ) : (
           <p>Loading...</p>
         )}
-      </header>
+      </main>
     </div>
   );
 }
