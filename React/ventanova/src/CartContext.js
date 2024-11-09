@@ -6,10 +6,12 @@ import React, { createContext, useState } from 'react';
 //componentes de nuestra aplicación. Para ello, 
 //creamos un componente CartProvider que se encargará de almacenar el 
 //estado del carrito.
+
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [message, setMessage] = useState('');
 
   const addToCart = (product) => {
     setCartItems(prevItems => {
@@ -22,12 +24,13 @@ export const CartProvider = ({ children }) => {
         return [...prevItems, { ...product, quantity: 1 }];
       }
     });
+    setMessage(`${product.name} added to cart!`);
+    setTimeout(() => setMessage(''), 3000); // Clear message after 3 seconds
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, message }}>
       {children}
     </CartContext.Provider>
   );
 };
-
