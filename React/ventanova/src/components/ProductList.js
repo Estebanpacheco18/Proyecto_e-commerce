@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContext } from '../CartContext';
+import './ProductList.css'; // importamos el archivo CSS
 
 function ProductList() {
   const [products, setProducts] = useState([]);

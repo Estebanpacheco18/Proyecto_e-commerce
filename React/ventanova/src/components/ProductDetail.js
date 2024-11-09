@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContext } from '../CartContext';
+import './ProductDetail.css'; // importamos el archivo CSS
 
 function ProductDetail() {
   const { id } = useParams();
@@ -24,7 +25,7 @@ function ProductDetail() {
   return (
     <div className="container">
       <h1>{product.name}</h1>
-      <img src={product.image} alt={product.name} className="img-fluid" />
+      <img src={product.image} alt={product.name} className="img-fluid product-image" />
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
       <button className="btn btn-primary" onClick={() => addToCart(product)}>Add to Cart</button>
