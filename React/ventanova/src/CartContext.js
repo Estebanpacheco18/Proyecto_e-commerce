@@ -1,6 +1,11 @@
 // src/CartContext.js
 import React, { createContext, useState } from 'react';
 
+//Lo que hacemos en este archivo es crear un contexto de React que
+//nos permitirá compartir el estado del carrito de compras entre los 
+//componentes de nuestra aplicación. Para ello, 
+//creamos un componente CartProvider que se encargará de almacenar el 
+//estado del carrito.
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -25,3 +30,4 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+

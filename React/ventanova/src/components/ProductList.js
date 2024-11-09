@@ -5,6 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContext } from '../CartContext';
 import './ProductList.css'; // importamos el archivo CSS
 
+//En este componente, importamos el hook useContext para acceder a la función addToCart
+//del CartContext.
+//Usamos el hook useState para manejar el estado de los productos.
+
 function ProductList() {
   const [products, setProducts] = useState([]);
   const { addToCart } = useContext(CartContext);
