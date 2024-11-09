@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Routes, Route, Navigate, Link } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
@@ -11,13 +11,20 @@ import './App.css';
 
 //En este componente, importamos los componentes ProductList, ProductDetail, 
 //Cart, Login y Logout.
+
+//ahora podemos usar el modo oscuro en nuestra aplicación.
 function App() {
   const { user, logout } = useContext(AuthContext);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="App-header">
-        <h1>Product List</h1>
+        <h1>VentaNova</h1>
         <div className="auth-buttons">
           {user ? (
             <>
@@ -27,6 +34,9 @@ function App() {
           ) : (
             <Link to="/login" className="btn btn-primary">Login</Link>
           )}
+          <button className="btn btn-secondary" onClick={toggleDarkMode}>
+            {darkMode ? 'Light Mode' : 'Dark Mode'}
+          </button>
         </div>
       </header>
       <main className="container">

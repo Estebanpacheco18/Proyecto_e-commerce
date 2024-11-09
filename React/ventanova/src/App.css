@@ -4,11 +4,15 @@
   --white: #FFFFFF;
   --light-gray: #CCCCCC;
   --black: #000000;
+  --dark-bg: #121212;
+  --dark-text: #E0E0E0;
+  --light-bg: #FFFFFF;
+  --light-text: #000000;
 }
 
 body {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--light-bg);
+  color: var(--light-text);
   font-family: Arial, sans-serif;
 }
 
@@ -97,4 +101,34 @@ li img {
 
 .btn-success {
   margin-top: 20px;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.dark-mode .App-header {
+  background-color: var(--black);
+}
+
+.dark-mode li {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.dark-mode .card {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.dark-mode .btn-primary, .dark-mode .btn-secondary, .dark-mode .btn-success {
+  background-color: var(--bright-green);
+  color: var(--black);
+}
+
+.dark-mode .btn-primary:hover, .dark-mode .btn-secondary:hover, .dark-mode .btn-success:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
