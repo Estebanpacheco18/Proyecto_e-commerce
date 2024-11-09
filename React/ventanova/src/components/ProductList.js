@@ -30,7 +30,7 @@ function ProductList() {
         <div className="row">
           {products.map(product => (
             <div key={product.id} className="col-md-4">
-              <div className="card mb-4">
+              <div className="card">
                 <img src={product.image} className="card-img-top" alt={product.name} />
                 <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
@@ -47,5 +47,4 @@ function ProductList() {
     );
   }
   
-
-export default ProductList;
+  export default ProductList;

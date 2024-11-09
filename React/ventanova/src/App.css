@@ -36,6 +36,10 @@ body {
   color: var(--bright-green);
 }
 
+.auth-buttons .btn {
+  margin-left: 10px;
+}
+
 h1 {
   color: var(--bright-green);
 }
@@ -97,10 +101,17 @@ li img {
 
 .btn-primary, .btn-secondary {
   margin-right: 10px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .btn-success {
   margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 /* Dark mode styles */

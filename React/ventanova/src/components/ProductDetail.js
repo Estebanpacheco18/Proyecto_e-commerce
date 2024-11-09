@@ -28,12 +28,14 @@ function ProductDetail() {
   
     return (
       <div className="container">
-        <h1>{product.name}</h1>
-        {message && <div className="alert alert-success">{message}</div>}
-        <img src={product.image} alt={product.name} className="img-fluid product-image" />
-        <p>{product.description}</p>
-        <p>Price: ${product.price}</p>
-        <button className="btn btn-primary" onClick={() => addToCart(product)}>Add to Cart</button>
+        <div className="product-details">
+          <h1>{product.name}</h1>
+          {message && <div className="alert alert-success">{message}</div>}
+          <img src={product.image} alt={product.name} className="img-fluid product-image" />
+          <p>{product.description}</p>
+          <p>Price: ${product.price}</p>
+          <button className="btn btn-primary" onClick={() => addToCart(product)}>Add to Cart</button>
+        </div>
       </div>
     );
   }
