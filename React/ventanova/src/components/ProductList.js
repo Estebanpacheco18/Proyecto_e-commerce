@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+// src/components/ProductList.js
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CartContext } from '../CartContext';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/products/')
@@ -28,7 +31,7 @@ function ProductList() {
                 <h5 className="card-title">{product.name}</h5>
                 <p className="card-text">{product.description}</p>
                 <Link to={`/product/${product.id}`} className="btn btn-primary">View Details</Link>
-                <button className="btn btn-secondary">Add to Cart</button>
+                <button className="btn btn-secondary" onClick={() => addToCart(product)}>Add to Cart</button>
               </div>
             </div>
           </div>

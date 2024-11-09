@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+// src/components/Cart.js
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CartContext } from '../CartContext';
 
 function Cart() {
-  const [cartItems, setCartItems] = useState([]);
-
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
-  };
+  const { cartItems } = useContext(CartContext);
 
   return (
     <div className="container">
