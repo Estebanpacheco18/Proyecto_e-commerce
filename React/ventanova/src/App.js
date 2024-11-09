@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
@@ -20,22 +21,21 @@ function App() {
       <header className="App-header">
         <h1>Product List</h1>
       </header>
-      <main>
+      <main className="container">
         {products.length > 0 ? (
-          <ul>
+          <ul className="list-group">
             {products.map(product => (
-              <li key={product.id}>
+              <li key={product.id} className="list-group-item">
                 <h2>{product.name}</h2>
                 <p>{product.description}</p>
-                <p>Price: ${product.price}</p>
-                <p>Stock: {product.stock}</p>
-                <p>Category: {product.category}</p>
-                <img src={product.image} alt={product.name} />
+                {product.image && (
+                  <img src={product.image} alt={product.name} className="product-image" />
+                )}
               </li>
             ))}
           </ul>
         ) : (
-          <p>Loading...</p>
+          <p>No products available</p>
         )}
       </main>
     </div>
