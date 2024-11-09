@@ -15,6 +15,7 @@ function Cart() {
             <li key={index} className="list-group-item">
               <h5>{item.name}</h5>
               <p>{item.description}</p>
+              <p>Quantity: {item.quantity}</p>
             </li>
           ))}
         </ul>
