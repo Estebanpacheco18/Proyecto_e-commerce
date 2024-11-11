@@ -1,17 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../CartContext';
+import { useNavigate } from 'react-router-dom';
 import './Payment.css';
 
 function Payment() {
   const { clearCart } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handlePayment = () => {
     setLoading(true);
     setTimeout(() => {
-      alert('Payment successful!');
+      alert('Payment successful! Congratulations on your purchase!');
       clearCart();
       setLoading(false);
+      navigate('/');
     }, 4000); // Simula un retraso de 4 segundos
   };
 

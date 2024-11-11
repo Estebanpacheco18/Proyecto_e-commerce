@@ -17,9 +17,14 @@ export const CartProvider = ({ children }) => {
     setCartItems(prevItems => {
       const existingProduct = prevItems.find(item => item.id === product.id);
       if (existingProduct) {
-        return prevItems.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
+        if (existingProduct.quantity < product.stock) {
+          return prevItems.map(item =>
+            item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          );
+        } else {
+          setMessage(`Cannot add more than ${product.stock} items of ${product.name}`);
+          return prevItems;
+        }
       } else {
         return [...prevItems, { ...product, quantity: 1 }];
       }

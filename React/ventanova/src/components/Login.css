@@ -1,0 +1,71 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--light-bg);
+  }
+  
+  .login-card {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-card h1 {
+    margin-bottom: 20px;
+    color: var(--dark-blue);
+  }
+  
+  .login-card .form-label {
+    color: var(--dark-blue);
+  }
+  
+  .login-card .form-control {
+    margin-bottom: 20px;
+  }
+  
+  .login-card .btn-primary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Dark mode styles */
+  .dark-mode .login-container {
+    background-color: var(--dark-bg);
+  }
+  
+  .dark-mode .login-card {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+  }
+  
+  .dark-mode .login-card h1 {
+    color: var(--bright-green);
+  }
+  
+  .dark-mode .login-card .form-label {
+    color: var(--bright-green);
+  }
+  
+  .dark-mode .login-card .form-control {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-text);
+  }
+  
+  .dark-mode .login-card .btn-primary {
+    background-color: var(--bright-green);
+    color: var(--black);
+  }
+  
+  .dark-mode .login-card .btn-primary:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+  }

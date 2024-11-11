@@ -1,50 +1,33 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContext } from '../CartContext';
 import './ProductList.css';
 
-//En este componente, importamos el hook useContext para acceder a la función addToCart
-//del CartContext.
-//Usamos el hook useState para manejar el estado de los productos.
-
-function ProductList() {
+function CategoryProducts() {
+  const { category } = useParams();
   const [products, setProducts] = useState([]);
   const { addToCart, message } = useContext(CartContext);
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/products/')
       .then(response => {
-        setProducts(response.data);
+        const allProducts = response.data;
+        const filteredProducts = allProducts.filter(product => product.category === category);
+        setProducts(filteredProducts);
       })
       .catch(error => {
-        console.error('There was an error fetching the data!', error);
+        console.error('There was an error fetching the products!', error);
       });
-  }, []);
-
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  }, [category]);
 
   return (
     <div className="container">
-      <h1>Product List</h1>
+      <h1>Products in {category}</h1>
       {message && <div className="alert alert-success">{message}</div>}
-      <input
-        type="text"
-        placeholder="Search products..."
-        value={searchTerm}
-        onChange={handleSearch}
-        className="form-control mb-3"
-      />
       <div className="row">
-        {filteredProducts.map(product => (
+        {products.map(product => (
           <div key={product.id} className="col-md-4">
             <div className="card">
               <img src={product.image} className="card-img-top" alt={product.name} />
@@ -67,4 +50,4 @@ function ProductList() {
   );
 }
 
-export default ProductList;
+export default CategoryProducts;
