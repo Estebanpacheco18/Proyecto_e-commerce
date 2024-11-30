@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Routes, Route, Navigate, Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
@@ -16,26 +15,18 @@ import './App.css';
 // En este componente, importamos los componentes ProductList, ProductDetail, 
 // Cart, Login y Logout.
 
-// ahora podemos usar el modo oscuro en nuestra aplicación.
+// Ahora podemos usar el modo oscuro en nuestra aplicación.
+// Para ello, importamos el hook useState y creamos un estado darkMode con el valor inicial false.
 
 function App() {
   const { user, logout } = useContext(AuthContext);
   const [darkMode, setDarkMode] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/products/')
-      .then(response => {
-        setProducts(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the data!', error);
-      });
-  }, []);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
+    document.body.classList.toggle('dark-mode', !darkMode);
   };
 
   const handleLogout = () => {
@@ -43,10 +34,22 @@ function App() {
     navigate('/login');
   };
 
+  const handleCategoryChange = (category) => {
+    if (category === 'all') {
+      setSelectedCategories([]);
+    } else {
+      setSelectedCategories(prevSelected =>
+        prevSelected.includes(category)
+          ? prevSelected.filter(c => c !== category)
+          : [...prevSelected, category]
+      );
+    }
+  };
+
   return (
     <div className={`App ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="App-header">
-        <h1>VentaNova</h1>
+        <h1><Link to="/" className="home-link">VentaNova</Link></h1>
         <div className="auth-buttons">
           {user ? (
             <>
@@ -64,11 +67,11 @@ function App() {
       <main className="container">
         <div className="row">
           <div className="col-md-3">
-            <CategoryMenu />
+            <CategoryMenu selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
           </div>
           <div className="col-md-9">
             <Routes>
-              <Route path="/" element={<ProductList products={products} />} />
+              <Route path="/" element={<ProductList selectedCategories={selectedCategories} />} />
               <Route path="/products/:id" element={<ProductDetail />} />
               <Route path="/categories/:category" element={<CategoryProducts />} />
               <Route path="/cart" element={<Cart />} />

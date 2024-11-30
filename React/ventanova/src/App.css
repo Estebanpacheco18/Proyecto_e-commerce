@@ -8,12 +8,20 @@
   --dark-text: #E0E0E0;
   --light-bg: #FFFFFF;
   --light-text: #000000;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 10px;
 }
 
 body {
   background-color: var(--light-bg);
   color: var(--light-text);
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
 }
 
 .App-header {
@@ -24,113 +32,83 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
 }
 
-.auth-buttons {
-  display: flex;
-  align-items: center;
-}
-
-.auth-buttons span {
-  margin-right: 10px;
-  color: var(--bright-green);
-}
-
-.auth-buttons .btn {
-  margin-left: 10px;
+.App-header.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
 }
 
 h1 {
-  color: var(--bright-green);
+  font-size: 2rem;
+  margin: 0;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.home-link {
+  color: var(--white);
+  text-decoration: none;
 }
 
-li {
-  background-color: var(--light-gray);
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+.home-link:hover {
+  text-decoration: underline;
 }
 
-li h2 {
-  color: var(--dark-blue);
+button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-li p {
+button:hover {
+  background-color: var(--bright-green);
   color: var(--black);
 }
 
-li img {
-  max-width: 100px;
-  border: 2px solid var(--dark-blue);
-  border-radius: 5px;
-}
-
-.App {
-  text-align: center;
-}
-
 .container {
-  margin-top: 20px;
+  padding: 20px;
 }
 
 .card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
   overflow: hidden;
+  transition: transform 0.2s;
 }
 
 .card:hover {
   transform: scale(1.05);
 }
 
-.card-img-top {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
 .card-body {
-  text-align: left;
+  padding: 20px;
 }
 
-.btn-primary, .btn-secondary {
-  margin-right: 10px;
-  margin-top: 10px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
-.btn-success {
-  margin-top: 20px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
 /* Dark mode styles */
-.dark-mode {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-}
-
-.dark-mode .App-header {
-  background-color: var(--black);
-}
-
-.dark-mode li {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-}
-
 .dark-mode .card {
   background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.dark-mode .card-title {
+  color: var(--bright-green);
+}
+
+.dark-mode .card-text {
   color: var(--dark-text);
 }
 

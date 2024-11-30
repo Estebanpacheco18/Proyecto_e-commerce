@@ -9,7 +9,7 @@ import './ProductList.css';
 //del CartContext.
 //Usamos el hook useState para manejar el estado de los productos.
 
-function ProductList() {
+function ProductList({ selectedCategories }) {
   const [products, setProducts] = useState([]);
   const { addToCart, message } = useContext(CartContext);
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,7 +29,8 @@ function ProductList() {
   };
 
   const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (selectedCategories.length === 0 || selectedCategories.includes(product.category))
   );
 
   return (

@@ -1,34 +1,43 @@
 .category-menu {
-    margin-top: 20px;
-  }
-  
-  .category-menu h2 {
-    color: var(--dark-blue);
-  }
-  
-  .category-menu ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .category-menu li {
-    margin: 10px 0;
-  }
-  
-  .category-menu a {
-    color: var(--dark-blue);
-    text-decoration: none;
-  }
-  
-  .category-menu a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Dark mode styles */
-  .dark-mode .category-menu h2 {
-    color: var(--bright-green);
-  }
-  
-  .dark-mode .category-menu a {
-    color: var(--bright-green);
-  }
+  margin-top: 20px;
+}
+
+.category-menu h2 {
+  color: var(--dark-blue);
+}
+
+.category-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.category-menu li {
+  margin: 10px 0;
+}
+
+.category-menu a {
+  color: var(--dark-blue);
+  text-decoration: none;
+}
+
+.category-menu a:hover {
+  text-decoration: underline;
+}
+
+.form-check-input {
+  margin-right: 10px;
+}
+
+/* Dark mode styles */
+.dark-mode .category-menu h2 {
+  color: var(--bright-green);
+}
+
+.dark-mode .category-menu a {
+  color: var(--bright-green);
+}
+
+.dark-mode .form-check-input {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}

@@ -33,6 +33,7 @@ function Cart() {
               <img src={item.image} alt={item.name} className="cart-item-image" />
               <div className="cart-item-details">
                 <h5>{item.name}</h5>
+                <p>{item.description.substring(0, 100)}...</p> {/* Descripción breve */}
                 <p>Quantity: {item.quantity}</p>
                 <p>Price: ${item.price}</p>
                 <p>Stock: {item.stock}</p>
@@ -47,7 +48,10 @@ function Cart() {
           ))}
         </ul>
       ) : (
-        <p>Your cart is empty.</p>
+        <div className="empty-cart">
+          <p>Your cart is empty. Add some products to your cart!</p> {/* Descripción breve */}
+          <button className="btn btn-primary" onClick={() => navigate('/')}>Back to Products</button>
+        </div>
       )}
       {cartItems.length > 0 && (
         <div className="cart-summary">
@@ -66,11 +70,16 @@ function Cart() {
             </button>
           </div>
           <div className="cart-actions">
-            <button className="btn btn-secondary" onClick={() => navigate(-1)}>Go Back</button>
+            <button className="btn btn-secondary" onClick={() => navigate('/')}>Continue Shopping</button>
             <Link to="/payment" className="btn btn-success">
               Proceed to Payment
             </Link>
           </div>
+        </div>
+      )}
+      {cartItems.length > 0 && (
+        <div className="mt-3">
+          <button className="btn btn-primary" onClick={() => navigate('/')}>Buy New Product</button>
         </div>
       )}
     </div>

@@ -91,6 +91,15 @@
   margin-top: 20px;
 }
 
+.empty-cart {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.empty-cart p {
+  margin-bottom: 20px;
+}
+
 /* Dark mode styles */
 .dark-mode .cart-header {
   color: var(--bright-green);
@@ -146,6 +155,20 @@
 }
 
 .dark-mode .cart-actions .btn:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.dark-mode .empty-cart p {
+  color: var(--dark-text);
+}
+
+.dark-mode .empty-cart .btn {
+  background-color: var(--bright-green);
+  color: var(--black);
+}
+
+.dark-mode .empty-cart .btn:hover {
   background-color: var(--dark-blue);
   color: var(--white);
 }

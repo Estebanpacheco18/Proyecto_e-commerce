@@ -1,65 +1,65 @@
 .payment-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .payment-container h2 {
-    margin-bottom: 20px;
-  }
-  
-  .payment-container .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .payment-container .form-control {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-  }
-  
-  .payment-container .btn {
-    width: 100%;
-    padding: 10px;
-  }
-  
-  .loading-icon {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 18px;
-    color: #007bff;
-  }
-  
-  /* Dark mode styles */
-  .dark-mode .payment-container {
-    background-color: var(--dark-bg);
-    color: var(--dark-text);
-    border-color: var(--dark-text);
-  }
-  
-  .dark-mode .payment-container h2 {
-    color: var(--bright-green);
-  }
-  
-  .dark-mode .payment-container .form-control {
-    background-color: var(--dark-bg);
-    color: var(--dark-text);
-    border-color: var(--dark-text);
-  }
-  
-  .dark-mode .payment-container .btn {
-    background-color: var(--bright-green);
-    color: var(--black);
-  }
-  
-  .dark-mode .payment-container .btn:hover {
-    background-color: var(--dark-blue);
-    color: var(--white);
-  }
-  
-  .dark-mode .loading-icon {
-    color: var(--bright-green);
-  }
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.payment-container h2 {
+  margin-bottom: 20px;
+}
+
+.payment-container .form-group {
+  margin-bottom: 15px;
+}
+
+.payment-container .form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.payment-container .btn {
+  width: 100%;
+  padding: 10px;
+}
+
+.loading-icon {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #007bff;
+}
+
+/* Dark mode styles */
+.dark-mode .payment-container {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border-color: var(--dark-text);
+}
+
+.dark-mode .payment-container h2 {
+  color: var(--bright-green);
+}
+
+.dark-mode .payment-container .form-control {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border-color: var(--dark-text);
+}
+
+.dark-mode .payment-container .btn {
+  background-color: var(--bright-green);
+  color: var(--black);
+}
+
+.dark-mode .payment-container .btn:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.dark-mode .loading-icon {
+  color: var(--bright-green);
+}
