@@ -6,6 +6,7 @@ import './Payment.css';
 function Payment() {
   const { clearCart } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
+  const [showCancelConfirm, setShowCancelConfirm] = useState(false);
   const navigate = useNavigate();
 
   const handlePayment = () => {
@@ -16,6 +17,20 @@ function Payment() {
       setLoading(false);
       navigate('/');
     }, 4000); // Simula un retraso de 4 segundos
+  };
+
+  const handleCancel = () => {
+    setShowCancelConfirm(true);
+  };
+
+  const confirmCancel = () => {
+    setLoading(false);
+    setShowCancelConfirm(false);
+    navigate('/');
+  };
+
+  const cancelCancel = () => {
+    setShowCancelConfirm(false);
   };
 
   return (
@@ -34,11 +49,23 @@ function Payment() {
           <label htmlFor="cvv">CVV</label>
           <input type="text" id="cvv" className="form-control" required />
         </div>
-        <button type="button" className="btn btn-primary" onClick={handlePayment} disabled={loading}>
-          {loading ? 'Processing...' : 'Pay Now'}
-        </button>
+        <div className="button-group">
+          <button type="button" className="btn btn-primary" onClick={handlePayment} disabled={loading}>
+            {loading ? 'Processing...' : 'Pay Now'}
+          </button>
+          <button type="button" className="btn btn-danger" onClick={handleCancel} disabled={loading}>
+            Cancel
+          </button>
+        </div>
       </form>
       {loading && <div className="loading-icon">Loading...</div>}
+      {showCancelConfirm && (
+        <div className="cancel-confirm">
+          <p>Are you sure you want to cancel the payment process?</p>
+          <button className="btn btn-secondary" onClick={confirmCancel}>Yes</button>
+          <button className="btn btn-primary" onClick={cancelCancel}>No</button>
+        </div>
+      )}
     </div>
   );
 }

@@ -8,7 +8,7 @@ import './Cart.css';
 //los productos que se encuentran en el carrito
 
 function Cart() {
-  const { cartItems, removeFromCart, addToCart, message } = useContext(CartContext);
+  const { cartItems, removeFromCart, addToCart, decreaseQuantity, message } = useContext(CartContext);
   const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
   const navigate = useNavigate();
@@ -37,12 +37,12 @@ function Cart() {
                 <p>Quantity: {item.quantity}</p>
                 <p>Price: ${item.price}</p>
                 <p>Stock: {item.stock}</p>
-                <button onClick={() => addToCart(item)} className="cart-item-add">
-                  Add More
-                </button>
-                <button onClick={() => removeFromCart(item.id)} className="cart-item-remove">
-                  Remove
-                </button>
+                <div className="quantity-controls">
+                  <button onClick={() => decreaseQuantity(item)} className="btn btn-secondary">-</button>
+                  <span className="quantity">{item.quantity}</span>
+                  <button onClick={() => addToCart(item, false)} className="btn btn-secondary">+</button>
+                </div>
+                <button onClick={() => removeFromCart(item.id)} className="btn btn-danger">Remove</button>
               </div>
             </li>
           ))}

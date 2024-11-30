@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContext } from '../CartContext';
+import { AuthContext } from '../AuthContext';
 import './ProductDetail.css';
 
 //En este componente, importamos el hook useParams de react-router-dom
@@ -14,6 +15,7 @@ function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const { addToCart, message } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +28,14 @@ function ProductDetail() {
       });
   }, [id]);
 
+  const handleAddToCart = (product) => {
+    if (user) {
+      addToCart(product);
+    } else {
+      navigate('/login');
+    }
+  };
+
   if (!product) return <div>Loading...</div>;
 
   return (
@@ -37,7 +47,7 @@ function ProductDetail() {
         <p>{product.description}</p>
         <p>Price: ${product.price}</p>
         <p>Stock: {product.stock}</p>
-        <button className="btn btn-primary" onClick={() => addToCart(product)}>Add to Cart</button>
+        <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>Add to Cart</button>
       </div>
       <div className="button-group mt-3">
         <button className="btn btn-secondary" onClick={() => navigate('/')}>Back to Products</button>

@@ -55,6 +55,16 @@ h1 {
   text-decoration: underline;
 }
 
+.auth-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-message {
+  margin-top: 10px;
+  color: var(--dark-blue);
+}
+
 button {
   font-size: 1rem;
   padding: 10px 20px;
@@ -67,6 +77,10 @@ button {
 button:hover {
   background-color: var(--bright-green);
   color: var(--black);
+}
+
+.ml-3 {
+  margin-left: 1rem;
 }
 
 .container {
@@ -98,6 +112,70 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.dropbtn {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 15px 30px; /* Hacer el botón más grande */
+  font-size: 18px; /* Aumentar el tamaño de la fuente */
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--white);
+  min-width: 300px; /* Hacer el menú más largo */
+  box-shadow: var(--shadow);
+  z-index: 1;
+  border-radius: var(--border-radius);
+}
+
+.dropdown-content a {
+  color: var(--dark-blue);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--light-gray);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.category-menu {
+  padding: 10px;
+}
+
+.search-container {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.search-container .form-control {
+  width: 100%;
+  max-width: 400px;
+}
+
+.button-group.mt-3.justify-content-center {
+  display: flex;
+  justify-content: center;
+}
+
 /* Dark mode styles */
 .dark-mode .card {
   background-color: var(--dark-bg);
@@ -120,4 +198,32 @@ button:hover {
 .dark-mode .btn-primary:hover, .dark-mode .btn-secondary:hover, .dark-mode .btn-success:hover {
   background-color: var(--dark-blue);
   color: var(--white);
+}
+
+.dark-mode .dropbtn {
+  background-color: var(--dark-bg);
+  color: var(--bright-green);
+}
+
+.dark-mode .dropdown-content {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.dark-mode .dropdown-content a {
+  color: var(--bright-green);
+}
+
+.dark-mode .dropdown-content a:hover {
+  background-color: var(--dark-blue);
+}
+
+.dark-mode .welcome-message {
+  color: var(--bright-green);
+}
+
+.dark-mode .search-container .form-control {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border: 1px solid var(--light-gray);
 }

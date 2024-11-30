@@ -4,26 +4,40 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
 
 //En este componente, importamos el AuthContext 
-//y usamos el hook useContext para acceder a la función login.
+//y usamos el hook useContext para acceder a las funciones login y register.
 
-//el hook useState se utiliza para manejar el estado del formulario de login.
+//el hook useState se utiliza para manejar el estado del formulario de login y registro.
 
 //La función Login se encarga de mostrar un formulario
+
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useContext(AuthContext);
+  const [error, setError] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
+  const { login, register } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes agregar lógica para autenticar al usuario con la contraseña
-    login(username);
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters long');
+      return;
+    }
+    try {
+      if (isRegistering) {
+        register(username, password);
+      } else {
+        login(username, password);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
-        <h1>Login</h1>
+        <h1>{isRegistering ? 'Register' : 'Login'}</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">Username</label>
@@ -47,8 +61,17 @@ function Login() {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">Login</button>
+          {error && <div className="alert alert-danger">{error}</div>}
+          <button type="submit" className="btn btn-primary">
+            {isRegistering ? 'Register' : 'Login'}
+          </button>
         </form>
+        <button
+          className="btn btn-link mt-3"
+          onClick={() => setIsRegistering(!isRegistering)}
+        >
+          {isRegistering ? 'Already have an account? Login' : "Don't have an account? Register"}
+        </button>
       </div>
     </div>
   );

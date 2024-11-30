@@ -1,18 +1,22 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContext } from '../CartContext';
+import { AuthContext } from '../AuthContext';
+import ProductCarousel from './ProductCarousel';
 import './ProductList.css';
 
 //En este componente, importamos el hook useContext para acceder a la función addToCart
-//del CartContext.
+//del CartContext y AuthContext.
 //Usamos el hook useState para manejar el estado de los productos.
 
-function ProductList({ selectedCategories }) {
+function ProductList({ selectedCategories, searchTerm }) {
   const [products, setProducts] = useState([]);
   const { addToCart, message } = useContext(CartContext);
-  const [searchTerm, setSearchTerm] = useState('');
+  const { user } = useContext(AuthContext);
+  const [loginMessage, setLoginMessage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/products/')
@@ -24,8 +28,14 @@ function ProductList({ selectedCategories }) {
       });
   }, []);
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+  const handleAddToCart = (product) => {
+    if (user) {
+      addToCart(product);
+    } else {
+      setLoginMessage('You must be logged in to add products to the cart.');
+      setTimeout(() => setLoginMessage(''), 3000); // Clear message after 3 seconds
+      navigate('/login');
+    }
   };
 
   const filteredProducts = products.filter(product =>
@@ -37,14 +47,9 @@ function ProductList({ selectedCategories }) {
     <div className="container">
       <h1>Product List</h1>
       {message && <div className="alert alert-success">{message}</div>}
-      <input
-        type="text"
-        placeholder="Search products..."
-        value={searchTerm}
-        onChange={handleSearch}
-        className="form-control mb-3"
-      />
-      <div className="row">
+      {loginMessage && <div className="alert alert-warning">{loginMessage}</div>}
+      <ProductCarousel />
+      <div className="row mt-4">
         {filteredProducts.map(product => (
           <div key={product.id} className="col-md-4">
             <div className="card">
@@ -56,14 +61,14 @@ function ProductList({ selectedCategories }) {
                 <p className="card-text">Stock: {product.stock}</p>
                 <div className="button-group">
                   <Link to={`/products/${product.id}`} className="btn btn-primary">View Details</Link>
-                  <button className="btn btn-secondary" onClick={() => addToCart(product)}>Add to Cart</button>
+                  <button className="btn btn-secondary" onClick={() => handleAddToCart(product)}>Add to Cart</button>
                 </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="button-group mt-3">
+      <div className="button-group mt-3 justify-content-center">
         <Link to="/cart" className="btn btn-success">Go to Cart</Link>
       </div>
     </div>

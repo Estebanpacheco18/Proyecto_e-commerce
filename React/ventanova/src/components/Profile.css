@@ -1,0 +1,33 @@
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .profile-container h1 {
+    margin-bottom: 20px;
+    color: var(--dark-blue);
+  }
+  
+  .profile-container p {
+    color: var(--black);
+  }
+  
+  /* Dark mode styles */
+  .dark-mode .profile-container {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-text);
+  }
+  
+  .dark-mode .profile-container h1 {
+    color: var(--bright-green);
+  }
+  
+  .dark-mode .profile-container p {
+    color: var(--dark-text);
+  }
