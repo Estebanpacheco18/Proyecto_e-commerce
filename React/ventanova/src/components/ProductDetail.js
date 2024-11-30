@@ -39,7 +39,7 @@ function ProductDetail() {
         <p>Stock: {product.stock}</p>
         <button className="btn btn-primary" onClick={() => addToCart(product)}>Add to Cart</button>
       </div>
-      <div className="mt-3">
+      <div className="button-group mt-3">
         <button className="btn btn-secondary" onClick={() => navigate('/')}>Back to Products</button>
         <Link to="/cart" className="btn btn-success">Go to Cart</Link>
       </div>

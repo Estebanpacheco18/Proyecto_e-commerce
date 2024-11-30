@@ -54,14 +54,16 @@ function ProductList({ selectedCategories }) {
                 <p className="card-text">{product.description}</p>
                 <p className="card-text">Price: ${product.price}</p>
                 <p className="card-text">Stock: {product.stock}</p>
-                <Link to={`/products/${product.id}`} className="btn btn-primary">View Details</Link>
-                <button className="btn btn-secondary" onClick={() => addToCart(product)}>Add to Cart</button>
+                <div className="button-group">
+                  <Link to={`/products/${product.id}`} className="btn btn-primary">View Details</Link>
+                  <button className="btn btn-secondary" onClick={() => addToCart(product)}>Add to Cart</button>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-3">
+      <div className="button-group mt-3">
         <Link to="/cart" className="btn btn-success">Go to Cart</Link>
       </div>
     </div>

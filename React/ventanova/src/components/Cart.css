@@ -77,7 +77,13 @@
 .coupon-container {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   margin-top: 20px;
+}
+
+.coupon-container label {
+  margin-right: 10px;
+  color: var(--dark-blue);
 }
 
 .coupon-container .form-control {
@@ -108,6 +114,7 @@
 .dark-mode .cart-item {
   background-color: var(--dark-bg);
   color: var(--dark-text);
+  border: 1px solid var(--light-gray); /* Mejora el contorno */
 }
 
 .dark-mode .cart-item h5 {
@@ -133,10 +140,14 @@
   color: var(--bright-green);
 }
 
+.dark-mode .coupon-container label {
+  color: var(--bright-green); /* Mejora la visibilidad de la etiqueta */
+}
+
 .dark-mode .coupon-container .form-control {
   background-color: var(--dark-bg);
   color: var(--dark-text);
-  border-color: var(--dark-text);
+  border: 1px solid var(--light-gray); /* Mejora el contorno */
 }
 
 .dark-mode .coupon-container .btn {

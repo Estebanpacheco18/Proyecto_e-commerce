@@ -58,8 +58,10 @@ function Cart() {
           <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
           <h3>Discounted Price: ${discountedPrice.toFixed(2)}</h3>
           <div className="coupon-container">
+            <label htmlFor="coupon">Coupon Code:</label>
             <input
               type="text"
+              id="coupon"
               placeholder="Enter coupon code"
               value={coupon}
               onChange={(e) => setCoupon(e.target.value)}
@@ -75,11 +77,6 @@ function Cart() {
               Proceed to Payment
             </Link>
           </div>
-        </div>
-      )}
-      {cartItems.length > 0 && (
-        <div className="mt-3">
-          <button className="btn btn-primary" onClick={() => navigate('/')}>Buy New Product</button>
         </div>
       )}
     </div>

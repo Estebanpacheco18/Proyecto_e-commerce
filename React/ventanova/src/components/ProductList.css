@@ -32,19 +32,27 @@
   margin-bottom: 20px;
 }
 
-.btn-primary, .btn-secondary {
-  margin-right: 10px;
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-group .btn {
   margin-top: 10px;
-  padding: 10px 20px;
+  padding: 5px 10px; /* Reducir el tamaño de los botones */
+  font-size: 14px; /* Reducir el tamaño de la fuente */
+}
+
+.btn-primary, .btn-secondary {
+  padding: 5px 10px; /* Reducir el tamaño de los botones */
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px; /* Reducir el tamaño de la fuente */
 }
 
 .btn-success {
-  margin-top: 20px;
-  padding: 10px 20px;
+  padding: 5px 10px; /* Reducir el tamaño de los botones */
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px; /* Reducir el tamaño de la fuente */
 }
 
 .filter-container {
@@ -60,6 +68,7 @@
 .dark-mode .card {
   background-color: var(--dark-bg);
   color: var(--dark-text);
+  border: 1px solid var(--light-gray); /* Mejora el contorno */
 }
 
 .dark-mode .card-title {

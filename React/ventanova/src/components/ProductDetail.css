@@ -27,6 +27,15 @@
   font-size: 16px;
 }
 
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-group .btn {
+  margin-top: 10px;
+}
+
 /* Dark mode styles */
 .dark-mode .product-details h1 {
   color: var(--bright-green);
